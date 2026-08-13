@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Etienne Cristoffanini | Artist - Berlin, Germany</title>
+    <meta name="description" content="Official portfolio of Etienne Cristoffanini, an exceptional tattoo artist, painter, and illustrator based in Berlin, Germany. Custom tattoos, paintings, mural and ink drawings.">
+    <meta name="keywords" content="Etienne Cristoffanini, Tattoo Artist Berlin, Tattoo studio Berlin, Art Berlin, Paintings Germany, Contemporary Drawings Berlin, custom tattoo Berlin, art gallery Berlin">
+    <meta name="author" content="Etienne Cristoffanini">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Etienne Cristoffanini | Artist - Berlin">
+    <meta property="og:description" content="Explore custom ink tattoos, contemporary drawings, and dynamic murals created by Etienne Cristoffanini in Berlin, Germany.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cristoffanini-art.de">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="js/tailwindcss.js"></script>
+    
+    <!-- Lucide Icons for clean line visuals -->
+    <script src="js/lucide.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+                    },
+                    colors: {
+                        brandDark: '#111111',
+                        brandGray: '#F2F2F2',
+                        brandMedium: '#767676'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Inter';
+            src: url('fonts/Inter-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('fonts/Playfair_9pt-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('fonts/Playfair_9pt-Italic.ttf') format('truetype');
+            font-weight: 400;
+            font-style: italic;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('fonts/Playfair_9pt-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('fonts/Playfair_9pt-SemiBoldItalic.ttf') format('truetype');
+            font-weight: 600;
+            font-style: italic;
+            font-display: swap;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            overflow-x: hidden;
+        }
+        
+        .artist-title {
+            font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', serif;
+        }
+
+        /* Customize scrollbars to be thin and clean */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cdcdcd;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #111111;
+        }
+
+        /* Prevent background scroll when modal open */
+        .modal-open {
+            overflow: hidden;
+        }
+
+        /* Smooth reveal transitions */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Fixed Navigation Bar with Glassmorphism Gray/White backdrop -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-zinc-100/70 backdrop-blur-md border-b border-black/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Artist Branding Logo -->
+            <a href="#about" onclick="navigateToHome(event)" class="text-2xl md:text-3xl font-semibold tracking-wider text-brandDark artist-title hover:opacity-75 transition-opacity duration-300">
+                Etienne Cristoffanini
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-12 text-sm uppercase tracking-widest font-medium">
+                <a href="#about" class="text-brandDark hover:text-brandMedium transition-colors duration-300 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-brandDark/20 after:transition-all after:duration-300">About Me</a>
+                <a href="#portfolio" class="text-brandDark hover:text-brandMedium transition-colors duration-300 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-brandDark/20 after:transition-all after:duration-300">Portfolio</a>
+                <a href="#contact" class="text-brandDark hover:text-brandMedium transition-colors duration-300 relative py-1 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-brandDark/20 after:transition-all after:duration-300">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button (Hamburger) -->
+            <button id="mobile-menu-btn" class="md:hidden text-brandDark focus:outline-none p-3 -mr-3" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu" class="w-8 h-8 transition-transform duration-300" id="hamburger-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dynamic Navigation Drawer -->
+        <div id="mobile-drawer" class="md:hidden absolute top-full right-6 w-48 bg-white/95 backdrop-blur-md border border-black/10 rounded-lg shadow-xl flex flex-col py-5 px-6 space-y-5 text-right uppercase tracking-widest text-xs font-semibold opacity-0 translate-y-[-10px] pointer-events-none transition-all duration-300 ease-in-out z-50">
+            <a href="#about" onclick="toggleMobileMenu()" class="text-brandDark hover:text-brandMedium transition-colors duration-200 py-3 block">About Me</a>
+            <a href="#portfolio" onclick="toggleMobileMenu()" class="text-brandDark hover:text-brandMedium transition-colors duration-200 py-3 block">Portfolio</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-brandDark hover:text-brandMedium transition-colors duration-200 py-3 block">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content Container (Dynamic Single-Page Router View) -->
+    <main id="main-content" class="flex-grow pt-24">
+
+        <!-- Bio / About Section -->
+        <section id="about" class="max-w-6xl mx-auto px-6 py-12 md:py-24">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Portrait Canvas Frame -->
+                <div class="md:col-span-5 order-2 md:order-1">
+                    <div class="relative group max-w-[320px] sm:max-w-[380px] md:max-w-none mx-auto">
+                        <div class="absolute -inset-2 bg-zinc-100 rounded-lg -rotate-1 group-hover:rotate-0 transition-all duration-500"></div>
+                        <div class="relative aspect-[3/4] bg-zinc-200 overflow-hidden rounded-md shadow-md border border-black/5">
+                            <img src="test.jpg" 
+                                 alt="Etienne Cristoffanini Portrait" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                        </div>
+                        <span class="block text-center md:text-left text-[10px] uppercase tracking-widest text-brandMedium mt-3 italic">
+                            Etienne Cristoffanini / Studio Portrait
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Editorial Bio text -->
+                <div class="md:col-span-7 order-1 md:order-2 text-center md:text-left">
+                    <span class="text-xs uppercase tracking-widest text-brandMedium block mb-4 font-semibold">Etienne Cristoffanini</span>
+                    <h1 class="text-3xl md:text-5xl font-serif text-brandDark mb-6 leading-tight">
+                        Place for your title and description. XXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXX
+                    </h1>
+                    <div class="h-[1px] w-16 bg-brandDark/20 mx-0 mb-8 hidden md:block"></div>
+                    <div class="h-[1px] w-16 bg-brandDark/20 mx-auto mb-8 md:hidden"></div>
+                    
+                    <div class="text-sm md:text-base text-brandMedium leading-relaxed space-y-6 font-light">
+                        <p>
+                            XXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXX
+                        </p>
+                        <p>
+                            XXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXX XXXXXXXXXXX
+                        </p>
+                        <p class="text-sm italic text-brandDark mt-4 pt-4 border-t border-black/5">
+                            "PLACE FOR YOUR QUOTE - WE CAN DELETE IT IF NOT NEEDED"
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="bg-brandGray/40 border-t border-b border-black/5 py-16 md:py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <div class="text-center mb-12">
+                    <span class="text-xs uppercase tracking-widest text-brandMedium">Selected Works</span>
+                    <h2 class="text-3xl md:text-4xl font-serif text-brandDark mt-1">Portfolio Gallery</h2>
+                </div>
+
+                <!-- Portfolio Tab Selector -->
+                <div class="flex justify-center space-x-2 md:space-x-4 mb-10 max-w-md mx-auto border-b border-black/10 pb-4">
+                    <button onclick="switchPortfolioCategory('drawings')" id="btn-drawings" class="portfolio-tab-btn flex-1 py-2 text-xs md:text-sm uppercase tracking-widest font-semibold border-b-2 border-brandDark text-brandDark transition-all duration-300">
+                        Drawings
+                    </button>
+                    <button onclick="switchPortfolioCategory('murals')" id="btn-murals" class="portfolio-tab-btn flex-1 py-2 text-xs md:text-sm uppercase tracking-widest font-medium border-b-2 border-transparent text-brandMedium hover:text-brandDark transition-all duration-300">
+                        Murals
+                    </button>
+                    <button onclick="switchPortfolioCategory('tattoos')" id="btn-tattoos" class="portfolio-tab-btn flex-1 py-2 text-xs md:text-sm uppercase tracking-widest font-medium border-b-2 border-transparent text-brandMedium hover:text-brandDark transition-all duration-300">
+                        Tattoos
+                    </button>
+                </div>
+
+                <!-- Responsive Grid for Dynamic Portfolio Images -->
+                <div id="portfolio-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 min-h-[400px]">
+                    <!-- Dynamically populated via JavaScript -->
+                </div>
+
+                <!-- PROCESS section -->
+                <div class="mt-20 pt-16 border-t border-black/5">
+                    <div class="text-center mb-12">
+                        <span class="text-xs uppercase tracking-widest text-brandMedium">Behind The Scenes</span>
+                        <h2 class="text-3xl md:text-4xl font-serif text-brandDark mt-1">Creative Process</h2>
+                    </div>
+
+                    <!-- Process Tab Buttons -->
+                    <div class="flex justify-center space-x-2 md:space-x-4 mb-10 max-w-md mx-auto border-b border-black/10 pb-4">
+                        <button onclick="switchProcessCategory('process-drawings')" id="btn-proc-drawings" class="process-tab-btn flex-1 py-2 text-xs md:text-sm uppercase tracking-widest font-semibold border-b-2 border-brandDark text-brandDark transition-all duration-300">
+                            Drawings
+                        </button>
+                        <button onclick="switchProcessCategory('process-murals')" id="btn-proc-murals" class="process-tab-btn flex-1 py-2 text-xs md:text-sm uppercase tracking-widest font-medium border-b-2 border-transparent text-brandMedium hover:text-brandDark transition-all duration-300">
+                            Murals
+                        </button>
+                        <button onclick="switchProcessCategory('process-tattoos')" id="btn-proc-tattoos" class="process-tab-btn flex-1 py-2 text-xs md:text-sm uppercase tracking-widest font-medium border-b-2 border-transparent text-brandMedium hover:text-brandDark transition-all duration-300">
+                            Tattoos
+                        </button>
+                    </div>
+
+                    <!-- Process Grid Content -->
+                    <div id="process-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 min-h-[400px]">
+                        <!-- Dynamically populated via JavaScript -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-4xl mx-auto px-6 py-16 md:py-24 text-center">
+            <span class="text-xs uppercase tracking-widest text-brandMedium block mb-4 font-semibold">Inquiries & Bookings</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-brandDark mb-8">Get In Touch</h2>
+            <div class="h-[1px] w-16 bg-brandDark/20 mx-auto mb-10"></div>
+
+            <div class="max-w-xl mx-auto mt-8">
+                <!-- Call to Action Link Integrations -->
+                <div class="flex flex-col justify-center space-y-4">
+                    <p class="text-sm sm:text-base text-brandMedium mb-2 text-center leading-normal">
+                        For commission inquiries, custom tattoo consultations, or to purchase original canvases:
+                    </p>
+                    
+                    <!-- Instagram Button -->
+                    <a href="https://www.instagram.com/krisros.ink" target="_blank" rel="noopener noreferrer"
+                       class="flex items-center justify-between bg-brandDark text-white px-6 py-4 sm:px-8 sm:py-5 rounded-lg hover:scale-[1.02] transition-transform duration-300 shadow-md">
+                        <div class="flex items-center space-x-3 sm:space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            <span class="text-sm sm:text-base uppercase tracking-widest font-medium">Instagram</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 sm:w-6 sm:h-6 opacity-70 flex-shrink-0"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+
+                    <!-- Email Contact Button -->
+                    <a href="mailto:e.cristoffanini@gmail.com" 
+                       class="flex items-center justify-between border border-brandDark text-brandDark px-6 py-4 sm:px-8 sm:py-5 rounded-lg hover:scale-[1.02] transition-transform duration-300 hover:bg-brandDark/5">
+                        <div class="flex items-center space-x-3 sm:space-x-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span class="text-sm sm:text-base uppercase tracking-widest font-medium">Email Inquiry</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 sm:w-6 sm:h-6 opacity-70 flex-shrink-0"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Privacy Policy Subpage View (Initially Hidden) -->
+    <main id="privacy-policy" class="hidden flex-grow pt-24 max-w-3xl mx-auto px-6 py-12">
+        <button onclick="navigateToHome(event)" class="inline-flex items-center space-x-2 text-brandDark hover:text-brandMedium mb-8 font-medium transition-all duration-200">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span class="text-xs uppercase tracking-widest">Back to Main Site</span>
+        </button>
+
+        <h1 class="text-3xl md:text-4xl font-serif text-brandDark mb-2">Privacy Policy</h1>
+        <p class="text-xs uppercase tracking-wider text-brandMedium mb-8">Effective Date: July 19, 2026</p>
+
+        <div class="prose prose-sm text-brandMedium space-y-6 leading-relaxed">
+            <p>This Privacy Policy explains how personal data is processed when you visit this website in accordance with the General Data Protection Regulation (GDPR / DSGVO).</p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">1. Data Controller</h2>
+            <p>The controller responsible for processing personal data on this website is:<br>
+            Etienne Cristoffanini<br>
+            Berlin, Germany<br>
+            Streßemannstraße 5<br>
+                    10249 Friedrischain Berlin<br>
+                    Germany<br>
+            Email: <a href="mailto:e.cristoffanini@gmail.com" class="underline hover:text-brandDark">e.cristoffanini@gmail.com</a></p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">2. Hosting and Server Log Files</h2>
+            <p>This website is a static website and does not use user accounts, analytics tools, or profiling.</p>
+            <p>When you visit this website, the hosting provider automatically collects information transmitted by your browser. This data is necessary to ensure the security and proper operation of the website (Art. 6(1)(f) GDPR).</p>
+            <p>The collected information may include:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>IP address</li>
+                <li>Date and time of access</li>
+                <li>Requested file or page</li>
+                <li>HTTP status code</li>
+                <li>Browser type and version</li>
+                <li>Operating system</li>
+                <li>Referrer URL (if applicable)</li>
+            </ul>
+            <p>Server log files are stored only for as long as necessary to ensure the security and stability of the website and are then automatically deleted.</p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">3. Contact by Email</h2>
+            <p>If you contact us via the provided email address, the personal data you submit (such as your name, email address, and message) will be processed solely for the purpose of responding to your inquiry or discussing a tattoo booking.</p>
+            <p>The legal basis for this processing is Art. 6(1)(b) GDPR (pre-contractual measures) or Art. 6(1)(f) GDPR (legitimate interest in responding to inquiries).</p>
+            <p>Your data will not be shared with third parties unless required by law.</p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">4. Instagram</h2>
+            <p>This website contains a link to an Instagram profile.</p>
+            <p>By clicking the Instagram link, you leave this website and are redirected to Instagram, operated by Meta Platforms. Meta processes personal data under its own responsibility. Please refer to Instagram's Privacy Policy for further information.</p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">5. Cookies</h2>
+            <p>This website does not use tracking cookies, analytics cookies, or advertising cookies.</p>
+            <p>Technical cookies may be used by the hosting provider if required for the operation and security of the website.</p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">6. Your Rights</h2>
+            <p>Under the GDPR, you have the following rights:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Right of access (Art. 15 GDPR)</li>
+                <li>Right to rectification (Art. 16 GDPR)</li>
+                <li>Right to erasure (Art. 17 GDPR)</li>
+                <li>Right to restriction of processing (Art. 18 GDPR)</li>
+                <li>Right to data portability (Art. 20 GDPR)</li>
+                <li>Right to object to processing (Art. 21 GDPR)</li>
+                <li>Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
+            </ul>
+            <p>If you have any questions regarding the processing of your personal data, please contact us using the email address provided above.</p>
+
+            <h2 class="text-lg font-semibold font-serif text-brandDark mt-6">7. Changes to this Privacy Policy</h2>
+            <p>This Privacy Policy may be updated from time to time to reflect legal or technical changes. The current version is always available on this website.</p>
+        </div>
+    </main>
+
+    <!-- Impressum Subpage View (Initially Hidden) -->
+    <main id="impressum" class="hidden flex-grow pt-24 max-w-3xl mx-auto px-6 py-12">
+        <button onclick="navigateToHome(event)" class="inline-flex items-center space-x-2 text-brandDark hover:text-brandMedium mb-8 font-medium transition-all duration-200">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span class="text-xs uppercase tracking-widest">Back to Main Site</span>
+        </button>
+
+        <h1 class="text-3xl md:text-4xl font-serif text-brandDark mb-6">Impressum</h1>
+        
+        <div class="prose prose-sm text-brandMedium space-y-6 leading-relaxed">
+            <section class="space-y-2">
+                <h2 class="text-lg font-semibold font-serif text-brandDark">Information according to § 5 DDG</h2>
+            </section>
+
+            <section class="space-y-2">
+                <h3 class="text-md font-semibold font-serif text-brandDark">Website Operator</h3>
+                <p>
+                    <strong>Etienne Cristoffanini</strong><br>
+                    Streßemannstraße 5<br>
+                    10249 Friedrischain Berlin<br>
+                    Germany
+                </p>
+                <p class="pt-2">
+                    <strong>Email:</strong><br>
+                    <a href="mailto:e.cristoffanini@gmail.com" class="underline hover:text-brandDark transition-colors">e.cristoffanini@gmail.com</a>
+                </p>
+            </section>
+
+            <section class="space-y-2 border-t border-black/5 pt-6">
+                <h3 class="text-md font-semibold font-serif text-brandDark">Responsible for Content according to § 18 MStV</h3>
+                <p>
+                    <strong>Etienne Cristoffanini</strong><br>
+                    Streßemannstraße 5<br>
+                    10249 Friedrischain Berlin<br>
+                    Germany
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-brandDark text-white py-12 px-6 border-t border-white/5 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-6 md:space-y-0">
+            <div>
+                <p class="text-[9px] min-[375px]:text-xs sm:text-sm font-light text-zinc-400 flex flex-row items-center justify-center md:justify-start gap-x-1.5 sm:gap-x-4 flex-wrap gap-y-2">
+                    <span>&copy; Etienne Cristoffanini 2026 &middot; Artist in Berlin &middot; All rights reserved.</span>
+                    <span class="text-zinc-600">|</span>
+                    <a href="#privacy" onclick="navigateToPrivacy(event)" class="inline-block transition-transform duration-300 ease-out hover:-translate-y-0.5 text-zinc-300 hover:text-white underline decoration-zinc-500 hover:decoration-white underline-offset-4 font-medium text-[9px] min-[375px]:text-xs uppercase tracking-widest whitespace-nowrap">
+                        Privacy Policy
+                    </a>
+                    <span class="text-zinc-600">|</span>
+                    <a href="#impressum" onclick="navigateToImpressum(event)" class="inline-block transition-transform duration-300 ease-out hover:-translate-y-0.5 text-zinc-300 hover:text-white underline decoration-zinc-500 hover:decoration-white underline-offset-4 font-medium text-[9px] min-[375px]:text-xs uppercase tracking-widest whitespace-nowrap">
+                        Impressum
+                    </a>
+                </p>
+                <p class="text-[9px] sm:text-xs text-zinc-500 mt-2">
+                    Kottbusser Damm 79, 10967 Berlin, Germany
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Clean Minimalist Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-6 right-6 z-50 max-w-sm bg-brandDark text-white p-5 rounded-lg shadow-2xl border border-white/10 hidden transform translate-y-10 opacity-0 transition-all duration-500">
+        <div class="flex flex-col space-y-4">
+            <div class="flex items-start justify-between">
+                <h4 class="text-sm font-semibold uppercase tracking-widest text-zinc-100">Cookie Notice</h4>
+                <i data-lucide="info" class="w-4 h-4 text-zinc-400"></i>
+            </div>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+                We only use necessary cookies to enable page transitions and preserve your navigation state. No marketing trackings are applied. Read our 
+                <a href="#privacy" onclick="navigateToPrivacy(event)" class="text-white hover:text-zinc-300 underline decoration-zinc-400 hover:decoration-white underline-offset-2 transition-all duration-150 font-medium">Privacy Policy</a>.
+            </p>
+            <div class="flex justify-end">
+                <button onclick="dismissCookieBanner()" class="bg-white text-brandDark text-xs uppercase tracking-widest px-4 py-2 rounded font-semibold hover:bg-zinc-200 transition-colors duration-200">
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sophisticated Full-screen Responsive Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm hidden flex-col justify-between p-4 md:p-8" role="dialog" aria-modal="true">
+        <!-- Lightbox Header Area -->
+        <div class="w-full flex items-center justify-between text-white">
+            <span id="lightbox-counter" class="text-xs uppercase tracking-widest text-zinc-400">1 / 6</span>
+            <button onclick="closeLightbox()" class="text-white hover:opacity-75 transition-opacity duration-200 p-2" aria-label="Close Gallery">
+                <i data-lucide="x" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Central Image View Area -->
+        <div class="flex-grow flex items-center justify-center relative select-none" id="lightbox-image-container">
+            <!-- Left Arrow (Desktop Navigation) -->
+            <button onclick="prevImage(event)" class="absolute left-2 md:left-4 text-white hover:opacity-70 transition-opacity p-3 z-10" aria-label="Previous Image">
+                <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+
+            <!-- Main Slide Image Container -->
+            <div class="max-w-full max-h-[75vh] md:max-h-[80vh] overflow-hidden flex items-center justify-center">
+                <img id="lightbox-img" src="" alt="Selected Art Work" class="object-contain max-w-full max-h-[75vh] md:max-h-[80vh] transition-transform duration-300 transform scale-95 opacity-0">
+            </div>
+
+            <!-- Right Arrow (Desktop Navigation) -->
+            <button onclick="nextImage(event)" class="absolute right-2 md:right-4 text-white hover:opacity-70 transition-opacity p-3 z-10" aria-label="Next Image">
+                <i data-lucide="chevron-right" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Lightbox Caption Footer -->
+        <div class="w-full text-center text-white pb-2">
+            <p id="lightbox-title" class="font-serif text-lg tracking-wide"></p>
+            <p id="lightbox-desc" class="text-xs text-zinc-400 mt-1 uppercase tracking-widest font-light"></p>
+        </div>
+    </div>
+
+    <script>
+        // Data containing 6 items per section pointing directly to test.jpg
+        const galleryData = {
+            drawings: [
+                { src: '1.jpg', title: 'your title', desc: 'your description' },
+                { src: '2.jpg', title: 'your title', desc: 'your description' },
+                { src: '3.jpg', title: 'your title', desc: 'your description' },
+                { src: '4.jpg', title: 'your title', desc: 'your description' },
+                { src: '5.jpg', title: 'your title', desc: 'your description' },
+                { src: '6.jpg', title: 'your title', desc: 'your description' }
+            ],
+            murals: [
+                { src: '01.jpg', title: 'your title', desc: 'your description' },
+                { src: '02.jpg', title: 'your title', desc: 'your description' },
+                { src: '03.jpg', title: 'your title', desc: 'your description' },
+                { src: '04.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' }
+            ],
+            tattoos: [
+                { src: 'tat1.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' }
+            ],
+            'process-drawings': [
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' }
+            ], 
+            'process-murals': [
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' }
+            ], 
+            'process-tattoos': [
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' },
+                { src: 'test.jpg', title: 'your title', desc: 'your description' }
+            ]
+        };
+
+        let activePortfolioCategory = 'drawings';
+        let activeProcessCategory = 'process-drawings';
+        let currentOpenGallery = [];
+        let currentImageIndex = 0;
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.contains('opacity-100');
+            if (!isOpen) {
+                mobileDrawer.classList.remove('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                mobileDrawer.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                hamburgerIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileDrawer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                mobileDrawer.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                hamburgerIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        });
+
+        function toggleMobileMenu() {
+            mobileDrawer.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            mobileDrawer.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+            hamburgerIcon.setAttribute('data-lucide', 'menu');
+            lucide.createIcons();
+        }
+
+        function navigateToPrivacy(event) {
+            event.preventDefault();
+            document.querySelector('header').classList.add('hidden');
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('impressum').classList.add('hidden');
+            document.getElementById('privacy-policy').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateToImpressum(event) {
+            event.preventDefault();
+            document.querySelector('header').classList.add('hidden');
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('privacy-policy').classList.add('hidden');
+            document.getElementById('impressum').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateToHome(event) {
+            event.preventDefault();
+            document.querySelector('header').classList.remove('hidden');
+            document.getElementById('privacy-policy').classList.add('hidden');
+            document.getElementById('impressum').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderGrid(categoryId, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const items = galleryData[categoryId] || [];
+            items.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'group relative overflow-hidden bg-brandGray border border-black/5 rounded-md cursor-pointer transition-all duration-500 hover:scale-[1.01] hover:shadow-lg fade-in';
+                card.innerHTML = `
+                    <div class="aspect-square w-full overflow-hidden bg-zinc-200">
+                        <img src="${item.src}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+                    </div>
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white font-serif text-sm md:text-base translate-y-2 group-hover:translate-y-0 transition-transform duration-300">${item.title}</p>
+                        <p class="text-zinc-300 text-[10px] md:text-xs uppercase tracking-widest translate-y-3 group-hover:translate-y-0 transition-transform duration-300 delay-75 mt-1">${item.desc}</p>
+                    </div>
+                `;
+                card.addEventListener('click', () => openLightbox(categoryId, index));
+                container.appendChild(card);
+            });
+            setTimeout(() => {
+                container.querySelectorAll('.fade-in').forEach((c, i) => setTimeout(() => c.classList.add('show'), i * 50));
+            }, 50);
+        }
+
+        function switchPortfolioCategory(category) {
+            activePortfolioCategory = category;
+            document.querySelectorAll('.portfolio-tab-btn').forEach(btn => {
+                btn.classList.remove('border-brandDark', 'text-brandDark', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-brandMedium', 'font-medium');
+            });
+            document.getElementById(`btn-${category}`).classList.remove('border-transparent', 'text-brandMedium', 'font-medium');
+            document.getElementById(`btn-${category}`).classList.add('border-brandDark', 'text-brandDark', 'font-semibold');
+            renderGrid(category, 'portfolio-grid');
+        }
+
+        function switchProcessCategory(category) {
+            activeProcessCategory = category;
+            document.querySelectorAll('.process-tab-btn').forEach(btn => {
+                btn.classList.remove('border-brandDark', 'text-brandDark', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-brandMedium', 'font-medium');
+            });
+            const rawId = category.replace('process-', '');
+            document.getElementById(`btn-proc-${rawId}`).classList.remove('border-transparent', 'text-brandMedium', 'font-medium');
+            document.getElementById(`btn-proc-${rawId}`).classList.add('border-brandDark', 'text-brandDark', 'font-semibold');
+            renderGrid(category, 'process-grid');
+        }
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCounter = document.getElementById('lightbox-counter');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+
+        function openLightbox(categoryId, index) {
+            currentOpenGallery = galleryData[categoryId] || [];
+            currentImageIndex = index;
+            document.body.classList.add('modal-open');
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            updateLightboxContent();
+        }
+
+        function closeLightbox() {
+            lightboxImg.classList.remove('scale-100', 'opacity-100');
+            lightboxImg.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+            }, 250);
+        }
+
+        function updateLightboxContent() {
+            if (!currentOpenGallery[currentImageIndex]) return;
+            const item = currentOpenGallery[currentImageIndex];
+            lightboxImg.classList.remove('scale-100', 'opacity-100');
+            lightboxImg.classList.add('scale-95', 'opacity-0');
+            lightboxImg.src = item.src;
+            lightboxImg.alt = item.title;
+            lightboxCounter.textContent = `${currentImageIndex + 1} / ${currentOpenGallery.length}`;
+            lightboxTitle.textContent = item.title;
+            lightboxDesc.textContent = item.desc;
+            setTimeout(() => {
+                lightboxImg.classList.remove('scale-95', 'opacity-0');
+                lightboxImg.classList.add('scale-100', 'opacity-100');
+            }, 50);
+        }
+
+        function nextImage(event) { if (event) event.stopPropagation(); currentImageIndex = (currentImageIndex + 1) % currentOpenGallery.length; updateLightboxContent(); }
+        function prevImage(event) { if (event) event.stopPropagation(); currentImageIndex = (currentImageIndex - 1 + currentOpenGallery.length) % currentOpenGallery.length; updateLightboxContent(); }
+
+        document.getElementById('lightbox-image-container').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeLightbox(); });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'ArrowRight') nextImage();
+            else if (e.key === 'ArrowLeft') prevImage();
+            else if (e.key === 'Escape') closeLightbox();
+        });
+
+        function checkCookieConsent() {
+            if (!localStorage.getItem('cookie_consent_etienne')) {
+                const banner = document.getElementById('cookie-banner');
+                banner.classList.remove('hidden');
+                setTimeout(() => { banner.classList.remove('translate-y-10', 'opacity-0'); banner.classList.add('translate-y-0', 'opacity-100'); }, 300);
+            }
+        }
+
+        function dismissCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.add('translate-y-10', 'opacity-0');
+            localStorage.setItem('cookie_consent_etienne', 'accepted');
+            setTimeout(() => banner.classList.add('hidden'), 500);
+        }
+
+        window.onload = function () {
+            lucide.createIcons();
+            switchPortfolioCategory('drawings');
+            switchProcessCategory('process-drawings');
+            checkCookieConsent();
+        };
+    </script>
+</body>
+</html>
